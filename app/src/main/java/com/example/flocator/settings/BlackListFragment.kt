@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flocator.R
+
 
 class BlackListFragment : Fragment(), SettingsSection {
     private lateinit var friendListAdapter: FriendListAdapter
@@ -22,12 +24,17 @@ class BlackListFragment : Fragment(), SettingsSection {
         val recyclerView = fragmentView.findViewById<RecyclerView>(R.id.blacklist_recycler_view)
         val backButton = fragmentView.findViewById<FrameLayout>(R.id.blacklist_back_button)
         val unselectAllButton = fragmentView.findViewById<FrameLayout>(R.id.blacklist_unselect_all_frame)
-
         backButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
-        recyclerView.layoutManager = GridLayoutManager(context, 3)
+        recyclerView.layoutManager = GridLayoutManager(
+            context,
+            FriendViewUtilities.getNumOfColumns(
+                context,
+                120f
+            )
+        )
 
         friendListAdapter = FriendListAdapter(getFriends())
 
@@ -43,7 +50,7 @@ class BlackListFragment : Fragment(), SettingsSection {
         return fragmentView
     }
 
-    fun getFriends(): ArrayList<Friend> {
+    private fun getFriends(): ArrayList<Friend> {
         val ans = ArrayList<Friend>()
         for (i in 1..10000) {
             ans.add(
@@ -56,5 +63,6 @@ class BlackListFragment : Fragment(), SettingsSection {
         }
         return ans
     }
+
 
 }

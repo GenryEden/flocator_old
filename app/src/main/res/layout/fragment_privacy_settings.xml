@@ -60,6 +60,7 @@
             android:contentDescription="@string/current_location"/>
     </FrameLayout>
     <TextView
+        android:id="@+id/current_loc_text"
         app:layout_constraintTop_toBottomOf="@id/current_loc_img_frame"
         app:layout_constraintLeft_toLeftOf="@id/current_loc_img_frame"
         app:layout_constraintRight_toRightOf="@id/current_loc_img_frame"
@@ -109,6 +110,7 @@
             </FrameLayout>
 
             <TextView
+                android:id="@+id/approx_loc_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -155,6 +157,7 @@
 
             </FrameLayout>
             <TextView
+                android:id="@+id/no_loc_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/fix_location"

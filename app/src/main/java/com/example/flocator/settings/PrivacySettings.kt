@@ -45,7 +45,9 @@ class PrivacySettings : Fragment(), SettingsSection {
         backButton.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-        recyclerView.layoutManager = GridLayoutManager(context, 3)
+        recyclerView.layoutManager = GridLayoutManager(context,
+            FriendViewUtilities.getNumOfColumns(context, 120f)
+        )
 
         friendListAdapter = FriendListAdapter(getFriends())
         recyclerView.adapter = friendListAdapter
